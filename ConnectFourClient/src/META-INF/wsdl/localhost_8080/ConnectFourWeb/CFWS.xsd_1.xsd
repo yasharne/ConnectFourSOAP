@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1-b419 (branches/2.3.1.x-7937; 2014-08-04T08:11:03+0000) JAXWS-RI/2.2.10-b140803.1500 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. --><xs:schema xmlns:tns="http://cfws/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://cfws/">
+
+<xs:element name="addMove" type="tns:addMove"/>
+
+<xs:element name="addMoveResponse" type="tns:addMoveResponse"/>
+
+<xs:element name="checkBoard" type="tns:checkBoard"/>
+
+<xs:element name="checkBoardResponse" type="tns:checkBoardResponse"/>
+
+<xs:element name="checkDraw" type="tns:checkDraw"/>
+
+<xs:element name="checkDrawResponse" type="tns:checkDrawResponse"/>
+
+<xs:element name="clearBoard" type="tns:clearBoard"/>
+
+<xs:element name="clearBoardResponse" type="tns:clearBoardResponse"/>
+
+<xs:element name="getCell" type="tns:getCell"/>
+
+<xs:element name="getCellResponse" type="tns:getCellResponse"/>
+
+<xs:element name="getColumn" type="tns:getColumn"/>
+
+<xs:element name="getColumnResponse" type="tns:getColumnResponse"/>
+
+<xs:element name="getConnectedNumber" type="tns:getConnectedNumber"/>
+
+<xs:element name="getConnectedNumberResponse" type="tns:getConnectedNumberResponse"/>
+
+<xs:element name="getPlayerName" type="tns:getPlayerName"/>
+
+<xs:element name="getPlayerNameResponse" type="tns:getPlayerNameResponse"/>
+
+<xs:element name="getPlayerTurn" type="tns:getPlayerTurn"/>
+
+<xs:element name="getPlayerTurnResponse" type="tns:getPlayerTurnResponse"/>
+
+<xs:element name="getRow" type="tns:getRow"/>
+
+<xs:element name="getRowResponse" type="tns:getRowResponse"/>
+
+<xs:element name="newConnection" type="tns:newConnection"/>
+
+<xs:element name="newConnectionResponse" type="tns:newConnectionResponse"/>
+
+<xs:element name="removeConnection" type="tns:removeConnection"/>
+
+<xs:element name="removeConnectionResponse" type="tns:removeConnectionResponse"/>
+
+<xs:element name="setPlayerName" type="tns:setPlayerName"/>
+
+<xs:element name="setPlayerNameResponse" type="tns:setPlayerNameResponse"/>
+
+<xs:element name="setPlayerTurn" type="tns:setPlayerTurn"/>
+
+<xs:element name="setPlayerTurnResponse" type="tns:setPlayerTurnResponse"/>
+
+<xs:complexType name="newConnection">
+<xs:sequence>
+<xs:element name="playerName" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="newConnectionResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="checkDraw">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="checkDrawResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeConnection">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="removeConnectionResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addMove">
+<xs:sequence>
+<xs:element name="column" type="xs:int"/>
+<xs:element name="playerNo" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addMoveResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getConnectedNumber">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getConnectedNumberResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="setPlayerTurn">
+<xs:sequence>
+<xs:element name="playerTurn" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="setPlayerTurnResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getColumn">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getColumnResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPlayerTurn">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getPlayerTurnResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCell">
+<xs:sequence>
+<xs:element name="row" type="xs:int"/>
+<xs:element name="col" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCellResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="checkBoard">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="checkBoardResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="setPlayerName">
+<xs:sequence>
+<xs:element name="playerNumber" type="xs:int"/>
+<xs:element name="playerName" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="setPlayerNameResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="clearBoard">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="clearBoardResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getRow">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getRowResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPlayerName">
+<xs:sequence>
+<xs:element name="playerNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPlayerNameResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
