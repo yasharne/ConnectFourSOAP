@@ -124,7 +124,12 @@ public class BoardController implements Initializable {
     }
 
     public void renderModel() {
-        rectLabel.setText(getPlayerName(getPlayerTurn()));
+        if (getPlayerTurn() == id) {
+            rectLabel.setText("your turn");
+        } else {
+            rectLabel.setText(getPlayerName(getPlayerTurn()) + "`s turn");
+        }
+        //rectLabel.setText(getPlayerName(getPlayerTurn()));
         rectPanel.setFill(getPlayerTurn() == 1 ? Color.GREEN.brighter().brighter() : Color.RED.brighter().brighter());
 
         int w = checkBoard();
