@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ConnectFourClient.jar" size="35485" download="eager" />
+    <jar href="ConnectFourClient.jar" size="35530" download="eager" />
     <jar href="lib/junit-3.8.2.jar" size="120640" download="eager" />
     <jar href="lib/junit-4.10-javadoc.jar" size="424758" download="eager" />
     <jar href="lib/junit-4.10-sources.jar" size="141185" download="eager" />

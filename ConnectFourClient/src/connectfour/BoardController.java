@@ -142,11 +142,20 @@ public class BoardController implements Initializable {
 
         int w = checkBoard();
         if (w == 1) {
-            msgLable.setText(getPlayerName(w) + " Won!");
+            if (id == 1) {
+                msgLable.setText("You Won!");
+            } else {
+                msgLable.setText(getPlayerName(w) + " Won!");
+            }
+
             msgLable.setTextFill(Color.GREEN.brighter().brighter());
             msgBoard.setVisible(true);
         } else if (w == 2) {
-            msgLable.setText(getPlayerName(w) + " Won!");
+            if (id == 2) {
+                msgLable.setText("You Won!");
+            } else {
+                msgLable.setText(getPlayerName(w) + " Won!");
+            }
             msgLable.setTextFill(Color.RED.brighter().brighter());
             msgBoard.setVisible(true);
         } else if (checkDraw()) {
