@@ -47,7 +47,6 @@ public class ConnectFour extends Application{
     
      public static void main(String[] args) {
         launch(args);
-        //removeConnection();
     }
 
     private static int removeConnection() {

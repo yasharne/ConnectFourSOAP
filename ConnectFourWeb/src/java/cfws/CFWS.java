@@ -27,6 +27,7 @@ public class CFWS {
      * create new Connection
      *
      * @param playerName
+     * @return player ID
      */
     @WebMethod
     public int newConnection(@WebParam(name = "playerName") String playerName) {
@@ -34,7 +35,7 @@ public class CFWS {
             connectedNumber++;
             player[connectedNumber] = playerName;
         }
-        return 1;
+        return connectedNumber;
     }
     
     @WebMethod

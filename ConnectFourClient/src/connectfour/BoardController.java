@@ -64,14 +64,8 @@ public class BoardController implements Initializable {
         Optional<String> result = dialog.showAndWait();
         //setPlayerName(1, result.get());
         isClosed = false;
-        int i = newConnection(result.get());
-        if (i == 0) {
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setContentText("Ooops, there was an error!");
-
-            alert.showAndWait();
-        }
+        id = newConnection(result.get());
+        System.out.println(id);
         clearBoard();
         for (Node a : board.getChildren()) {
 
