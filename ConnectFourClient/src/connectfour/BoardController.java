@@ -99,7 +99,7 @@ public class BoardController implements Initializable {
         board.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if (true) {
+                if (getConnectedNumber() == 2) {
                     int dw = (int) board.getWidth() / cols;
                     if (addMove((int) (t.getX() / dw), getPlayerTurn())) {
 
@@ -108,6 +108,11 @@ public class BoardController implements Initializable {
                         renderModel();
                     }
                     t.consume();
+                } else {
+                    Alert alert = new Alert(AlertType.WARNING);
+                    alert.setTitle("Warning !");
+                    alert.setContentText("Wait for other player to connect...");
+                    alert.showAndWait();
                 }
             }
         });
