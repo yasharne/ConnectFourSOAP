@@ -40,7 +40,7 @@ public class CFWS {
     @WebMethod
     public int removeConnection(){
         connectedNumber--;
-        return 1;
+        return connectedNumber;
     }
     
     @WebMethod

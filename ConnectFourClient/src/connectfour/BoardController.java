@@ -31,7 +31,10 @@ import javafx.scene.shape.Rectangle;
  * @author yashar
  */
 public class BoardController implements Initializable {
-private ConnectFour connectFour;
+
+    private ConnectFour connectFour;
+    private int id;
+    public boolean isClosed;
     @FXML
     GridPane board;
     @FXML
@@ -60,6 +63,7 @@ private ConnectFour connectFour;
         dialog.setContentText("Enter Your Name");
         Optional<String> result = dialog.showAndWait();
         //setPlayerName(1, result.get());
+        isClosed = false;
         int i = newConnection(result.get());
         if (i == 0) {
             Alert alert = new Alert(AlertType.ERROR);
@@ -77,26 +81,26 @@ private ConnectFour connectFour;
             }
         }
         renderModel();
-        /*        new Thread(new Runnable() {
-        
-        @Override
-        public void run() {
-        while (true) {
-        Platform.runLater(new Runnable() {
-        
-        @Override
-        public void run() {
-        renderModel();
-        }
-        });
-        try {
-        Thread.sleep(500);
-        } catch (InterruptedException ex) {
-        System.out.println(ex);
-        }
-        }
-        }
-        }).start();*/
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                while (!isClosed) {
+                    Platform.runLater(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            renderModel();
+                        }
+                    });
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException ex) {
+                        System.out.println(ex);
+                    }
+                }
+            }
+        }).start();
 
         board.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -155,7 +159,7 @@ private ConnectFour connectFour;
             }
 
         }
-    }   
+    }
 
     private static boolean addMove(int column, int playerNo) {
         cfws.CFWS_Service service = new cfws.CFWS_Service();
@@ -234,5 +238,5 @@ private ConnectFour connectFour;
         cfws.CFWS port = service.getCFWSPort();
         port.setPlayerTurn(playerTurn);
     }
-    
+
 }

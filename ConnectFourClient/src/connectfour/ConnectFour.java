@@ -6,10 +6,12 @@
 package connectfour;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 /**
  *
  * @author yashar
@@ -33,11 +35,19 @@ public class ConnectFour extends Application{
         bc.setMainApp(this);
         primaryStage.setResizable(false);
         primaryStage.show();
+        scene.getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
+
+            @Override
+            public void handle(WindowEvent event) {
+                bc.isClosed = true;
+                System.out.println(removeConnection());
+            }
+        });
     }
     
      public static void main(String[] args) {
         launch(args);
-        removeConnection();
+        //removeConnection();
     }
 
     private static int removeConnection() {

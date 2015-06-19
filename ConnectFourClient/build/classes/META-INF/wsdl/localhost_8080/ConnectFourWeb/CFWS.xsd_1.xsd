@@ -44,6 +44,10 @@
 
 <xs:element name="newConnectionResponse" type="tns:newConnectionResponse"/>
 
+<xs:element name="removeConnection" type="tns:removeConnection"/>
+
+<xs:element name="removeConnectionResponse" type="tns:removeConnectionResponse"/>
+
 <xs:element name="setPlayerName" type="tns:setPlayerName"/>
 
 <xs:element name="setPlayerNameResponse" type="tns:setPlayerNameResponse"/>
@@ -51,6 +55,18 @@
 <xs:element name="setPlayerTurn" type="tns:setPlayerTurn"/>
 
 <xs:element name="setPlayerTurnResponse" type="tns:setPlayerTurnResponse"/>
+
+<xs:complexType name="newConnection">
+<xs:sequence>
+<xs:element name="playerName" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="newConnectionResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
 
 <xs:complexType name="checkDraw">
 <xs:sequence/>
@@ -62,13 +78,11 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="newConnection">
-<xs:sequence>
-<xs:element name="playerName" type="xs:string" minOccurs="0"/>
-</xs:sequence>
+<xs:complexType name="removeConnection">
+<xs:sequence/>
 </xs:complexType>
 
-<xs:complexType name="newConnectionResponse">
+<xs:complexType name="removeConnectionResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:int"/>
 </xs:sequence>
