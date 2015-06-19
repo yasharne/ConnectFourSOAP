@@ -100,14 +100,23 @@ public class BoardController implements Initializable {
             @Override
             public void handle(MouseEvent t) {
                 if (getConnectedNumber() == 2) {
-                    int dw = (int) board.getWidth() / cols;
-                    if (addMove((int) (t.getX() / dw), getPlayerTurn())) {
+                    if (getPlayerTurn() == id) {
+                        int dw = (int) board.getWidth() / cols;
+                        if (addMove((int) (t.getX() / dw), getPlayerTurn())) {
 
-                        setPlayerTurn((getPlayerTurn() == 1 ? 2 : 1));
+                            setPlayerTurn((getPlayerTurn() == 1 ? 2 : 1));
 
-                        renderModel();
+                            renderModel();
+                        }
+                        t.consume();
+                    } else {
+                        Alert alert = new Alert(AlertType.ERROR);
+                        alert.setTitle("Error...!");
+                        alert.setHeaderText("gotcha!");
+                        alert.setContentText("It`s not your turn,\nwait for opponent to move");
+                        alert.showAndWait();
                     }
-                    t.consume();
+
                 } else {
                     Alert alert = new Alert(AlertType.WARNING);
                     alert.setTitle("Warning !");
