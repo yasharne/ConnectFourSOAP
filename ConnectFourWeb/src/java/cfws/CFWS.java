@@ -41,6 +41,7 @@ public class CFWS {
     @WebMethod
     public int removeConnection(){
         connectedNumber--;
+        playerTurn = 1;
         return connectedNumber;
     }
     
