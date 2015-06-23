@@ -83,7 +83,9 @@
 </xs:complexType>
 
 <xs:complexType name="removeConnection">
-<xs:sequence/>
+<xs:sequence>
+<xs:element name="playerName" type="xs:string" minOccurs="0"/>
+</xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="removeConnectionResponse">

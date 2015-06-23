@@ -215,6 +215,7 @@ public interface CFWS {
 
     /**
      * 
+     * @param playerName
      * @return
      *     returns int
      */
@@ -223,6 +224,8 @@ public interface CFWS {
     @RequestWrapper(localName = "removeConnection", targetNamespace = "http://cfws/", className = "cfws.RemoveConnection")
     @ResponseWrapper(localName = "removeConnectionResponse", targetNamespace = "http://cfws/", className = "cfws.RemoveConnectionResponse")
     @Action(input = "http://cfws/CFWS/removeConnectionRequest", output = "http://cfws/CFWS/removeConnectionResponse")
-    public int removeConnection();
+    public int removeConnection(
+        @WebParam(name = "playerName", targetNamespace = "")
+        String playerName);
 
 }

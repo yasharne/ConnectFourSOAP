@@ -40,7 +40,8 @@ public class ConnectFour extends Application{
             @Override
             public void handle(WindowEvent event) {
                 bc.isClosed = true;
-                System.out.println(removeConnection());
+                System.out.println(bc.getPlayerName());
+                System.out.println(removeConnection(bc.getPlayerName()));
                 if (bc.getWin()) {
                     updateScore(bc.getPlayerName());
                 }   
@@ -52,16 +53,18 @@ public class ConnectFour extends Application{
         launch(args);
     }
 
-    private static int removeConnection() {
-        cfws.CFWS_Service service = new cfws.CFWS_Service();
-        cfws.CFWS port = service.getCFWSPort();
-        return port.removeConnection();
-    }
+
 
     private static int updateScore(java.lang.String playerName) {
         cfws.CFWS_Service service = new cfws.CFWS_Service();
         cfws.CFWS port = service.getCFWSPort();
         return port.updateScore(playerName);
+    }
+
+    private static int removeConnection(java.lang.String playerName) {
+        cfws.CFWS_Service service = new cfws.CFWS_Service();
+        cfws.CFWS port = service.getCFWSPort();
+        return port.removeConnection(playerName);
     }
 
 

@@ -188,7 +188,7 @@ public class BoardController implements Initializable {
 
         }
     }
-    
+      
     public boolean getWin(){
         return win;
     }

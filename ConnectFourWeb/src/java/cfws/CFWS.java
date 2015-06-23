@@ -10,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -41,6 +43,23 @@ public class CFWS {
     @WebMethod
     public int newConnection(@WebParam(name = "playerName") String playerName) {
         if (true) {
+            boolean found = false;
+            try {
+                //ResultSet resultSet = statement.executeUpdate("UPDATE SCORE SET ONLINE=true WHERE id=");
+                ResultSet resultSet = statement.executeQuery("SELECT ID, ONLINE FROM SCORE");
+                while (resultSet.next()) {
+                    if (resultSet.getString("id").equals(playerName)) {
+                        statement.executeUpdate("UPDATE SCORE SET ONLINE=true WHERE id=" + playerName);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    statement.executeUpdate("INSERT INTO SCORE VALUES('" + playerName + "', " + 0 + ", true)");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(CFWS.class.getName()).log(Level.SEVERE, null, ex);
+            }
             connectedNumber++;
             player[connectedNumber] = playerName;
         }
@@ -48,7 +67,12 @@ public class CFWS {
     }
 
     @WebMethod
-    public int removeConnection() {
+    public int removeConnection(@WebParam(name = "playerName") String playerName) {
+        try {
+            statement.executeUpdate("UPDATE SCORE SET ONLINE=false WHERE id='" + playerName + "'");
+        } catch (SQLException ex) {
+            Logger.getLogger(CFWS.class.getName()).log(Level.SEVERE, null, ex);
+        }
         connectedNumber--;
         playerTurn = 1;
         return connectedNumber;
@@ -265,7 +289,7 @@ public class CFWS {
     public int updateScore(@WebParam(name = "playerName") String playerName) {
         try {
             ResultSet resultSet = statement.executeQuery("SELECT ID, SCORE FROM SCORE");
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 if (resultSet.getString("id").equals(playerName)) {
                     int t = resultSet.getInt("score");
                     ++t;
@@ -275,7 +299,7 @@ public class CFWS {
             }
             statement.executeUpdate("INSERT INTO SCORE VALUES('" + playerName + "', " + 1 + ", false)");
         } catch (SQLException ex) {
-            
+
         }
         return 1;
     }

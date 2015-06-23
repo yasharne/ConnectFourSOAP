@@ -48,18 +48,38 @@
                 Connection conn = DriverManager.getConnection(DB_URL, "yasharne", "123456789");
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT ID, SCORE FROM SCORE ORDER BY SCORE DESC");
-        %><table><%
-            while (rs.next()) {
-            %><tr><%
-                String id = rs.getString("id");
-                int score = rs.getInt("score");
-                %><td><%= id%></td>
-                <td><%= score%></td><%
-                %></tr><%                    }
-            %></table><%
-            %>
-            <%        } catch (Exception e) {
-            %>
+        %>
+        <p style="font-family: Courier; color: aqua">Top Scores:</p>
+        <div>
+            <table><%
+                while (rs.next()) {
+                %><tr><%
+                    String id = rs.getString("id");
+                    int score = rs.getInt("score");
+                    %><td><%= id%></td>
+                    <td><%= score%></td><%
+                    %></tr><%                    }
+                %></table>
+        </div>
+        <p style="font-family: Courier; color: aqua">Online players:</p>
+        <div>
+            <table>
+                <%  rs = stmt.executeQuery("SELECT * FROM SCORE WHERE ONLINE=true ORDER BY SCORE asc");
+
+                    while (rs.next()) {
+
+                %><tr><%                    String id = rs.getString("id");
+                    boolean online = rs.getBoolean("online");
+                    %>
+                    <td><%= id%></td>
+                    <td style="color: green">Online</td>
+                </tr><%
+                    }
+                %>
+            </table>
+        </div>
+        <%        } catch (Exception e) {
+        %>
         <h1><%= e%></h1>
         <%
             }
