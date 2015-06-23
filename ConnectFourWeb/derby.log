@@ -1,7 +1,7 @@
-Mon Jun 22 22:35:10 IRDT 2015 : Apache Derby Network Server - 10.11.1.2 - (1629631) started and ready to accept connections on port 1527
+Tue Jun 23 08:52:40 IRDT 2015 : Apache Derby Network Server - 10.11.1.2 - (1629631) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Mon Jun 22 22:35:10 IRDT 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-014e-1c71-fff4-00007a0f4007 
+Tue Jun 23 08:53:25 IRDT 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-014e-1ea7-5810-00007a0f4007 
 on database directory /home/yashar/NetBeansProjects/ConnectFourSOAP/ConnectFourWeb/Score with class loader sun.misc.Launcher$AppClassLoader@60e53b93 
 Loaded from file:/usr/java/jdk1.8.0_40/db/lib/derby.jar
 java.vendor=Oracle Corporation
@@ -12,36 +12,3 @@ os.arch=amd64
 os.version=4.0.4-301.fc22.x86_64
 derby.system.home=/home/yashar/NetBeansProjects/ConnectFourSOAP/ConnectFourWeb
 Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-Mon Jun 22 22:35:22 IRDT 2015:
-Shutting down instance a816c00e-014e-1c71-fff4-00007a0f4007 on database directory /home/yashar/NetBeansProjects/ConnectFourSOAP/ConnectFourWeb/Score with class loader sun.misc.Launcher$AppClassLoader@60e53b93 
-Mon Jun 22 22:35:22 IRDT 2015 Thread[DRDAConnThread_2,5,main] (DATABASE = Score), (DRDAID = {2}), Database 'Score' shutdown.
-----------------------------------------------------------------
-Mon Jun 22 22:35:43 IRDT 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a65c80ac-014e-1c71-fff4-00007a0f4007 
-on database directory /home/yashar/NetBeansProjects/ConnectFourSOAP/ConnectFourWeb/Score with class loader sun.misc.Launcher$AppClassLoader@60e53b93 
-Loaded from file:/usr/java/jdk1.8.0_40/db/lib/derby.jar
-java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_40-b26
-user.dir=/usr/java/jdk1.8.0_40/db
-os.name=Linux
-os.arch=amd64
-os.version=4.0.4-301.fc22.x86_64
-derby.system.home=/home/yashar/NetBeansProjects/ConnectFourSOAP/ConnectFourWeb
-Database Class Loader started - derby.database.classpath=''
-Mon Jun 22 23:21:11 IRDT 2015 Thread[DRDAConnThread_4,5,main] (DATABASE = null), (DRDAID = null), Execution failed because of a Distributed Protocol Error:  DRDA_Proto_SYNTAXRM; CODPNT arg  = 0; Error Code Value = 3. Plaintext connection attempt from an SSL enabled client?
-Mon Jun 22 23:21:11 IRDT 2015 : Execution failed because of a Distributed Protocol Error:  DRDA_Proto_SYNTAXRM; CODPNT arg  = 0; Error Code Value = 3. Plaintext connection attempt from an SSL enabled client?
-org.apache.derby.impl.drda.DRDAProtocolException: Execution failed because of a Distributed Protocol Error:  DRDA_Proto_SYNTAXRM; CODPNT arg  = 0; Error Code Value = 3. Plaintext connection attempt from an SSL enabled client?
-	at org.apache.derby.impl.drda.DRDAConnThread.throwSyntaxrm(Unknown Source)
-	at org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.exchangeServerAttributes(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.sessionInitialState(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
-Mon Jun 22 23:21:11 IRDT 2015 Thread[DRDAConnThread_4,5,main] (DATABASE = null), (DRDAID = null), Execution failed because of a Distributed Protocol Error:  DRDA_Proto_SYNTAXRM; CODPNT arg  = 0; Error Code Value = 3. Plaintext connection attempt from an SSL enabled client?
-Mon Jun 22 23:21:11 IRDT 2015 : Execution failed because of a Distributed Protocol Error:  DRDA_Proto_SYNTAXRM; CODPNT arg  = 0; Error Code Value = 3. Plaintext connection attempt from an SSL enabled client?
-org.apache.derby.impl.drda.DRDAProtocolException: Execution failed because of a Distributed Protocol Error:  DRDA_Proto_SYNTAXRM; CODPNT arg  = 0; Error Code Value = 3. Plaintext connection attempt from an SSL enabled client?
-	at org.apache.derby.impl.drda.DRDAConnThread.throwSyntaxrm(Unknown Source)
-	at org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.exchangeServerAttributes(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.sessionInitialState(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)

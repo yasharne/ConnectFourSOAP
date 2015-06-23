@@ -35,6 +35,7 @@ public class BoardController implements Initializable {
     private ConnectFour connectFour;
     private int id;
     public boolean isClosed;
+    public int score;
     @FXML
     GridPane board;
     @FXML
@@ -64,6 +65,7 @@ public class BoardController implements Initializable {
         Optional<String> result = dialog.showAndWait();
         //setPlayerName(1, result.get());
         isClosed = false;
+        score = 0;
         id = newConnection(result.get());
         System.out.println(id);
         clearBoard();
@@ -103,7 +105,7 @@ public class BoardController implements Initializable {
                     if (getPlayerTurn() == id) {
                         int dw = (int) board.getWidth() / cols;
                         if (addMove((int) (t.getX() / dw), getPlayerTurn())) {
-
+                            score += 10;
                             setPlayerTurn((getPlayerTurn() == 1 ? 2 : 1));
 
                             renderModel();
@@ -144,6 +146,7 @@ public class BoardController implements Initializable {
         if (w == 1) {
             if (id == 1) {
                 msgLable.setText("You Won!");
+                score += 50;
             } else {
                 msgLable.setText(getPlayerName(w) + " Won!");
             }
@@ -153,6 +156,7 @@ public class BoardController implements Initializable {
         } else if (w == 2) {
             if (id == 2) {
                 msgLable.setText("You Won!");
+                score += 50;
             } else {
                 msgLable.setText(getPlayerName(w) + " Won!");
             }
