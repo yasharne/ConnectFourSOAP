@@ -37,6 +37,7 @@ public class BoardController implements Initializable {
     public boolean isClosed;
     public int score;
     private String playerName;
+    private boolean win;
     @FXML
     GridPane board;
     @FXML
@@ -66,6 +67,7 @@ public class BoardController implements Initializable {
         Optional<String> result = dialog.showAndWait();
         //setPlayerName(1, result.get());
         isClosed = false;
+        win = false;
         score = 0;
         id = newConnection(result.get());
         playerName = result.get();
@@ -138,6 +140,7 @@ public class BoardController implements Initializable {
     }
 
     public void renderModel() {
+        System.out.println(score);
         if (getPlayerTurn() == id) {
             rectLabel.setText("your turn");
         } else {
@@ -149,24 +152,23 @@ public class BoardController implements Initializable {
         if (w == 1) {
             if (id == 1) {
                 msgLable.setText("You Won!");
-                score += 50;
-                updateScore(playerName, score);
+                win = true;
             } else {
                 msgLable.setText(getPlayerName(w) + " Won!");
             }
-
             msgLable.setTextFill(Color.GREEN.brighter().brighter());
             msgBoard.setVisible(true);
+            isClosed = true;
         } else if (w == 2) {
             if (id == 2) {
                 msgLable.setText("You Won!");
-                score += 50;
-                updateScore(playerName, score);
+                win = true;
             } else {
                 msgLable.setText(getPlayerName(w) + " Won!");
             }
             msgLable.setTextFill(Color.RED.brighter().brighter());
             msgBoard.setVisible(true);
+            isClosed = true;
         } else if (checkDraw()) {
             msgLable.setText("Draw");
             msgBoard.setVisible(true);
@@ -189,6 +191,22 @@ public class BoardController implements Initializable {
             }
 
         }
+    }
+    
+    public boolean getWin(){
+        return win;
+    }
+    
+    public void addScore(int value){
+        score += value;
+    }
+    
+    public int getScore(){
+        return score;
+    }
+    
+    public String getPlayerName(){
+        return playerName;
     }
 
     private static boolean addMove(int column, int playerNo) {
