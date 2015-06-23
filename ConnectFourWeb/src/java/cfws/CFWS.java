@@ -6,13 +6,10 @@
 package cfws;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -265,16 +262,18 @@ public class CFWS {
     }
 
     @WebMethod
-    public int updateScore(@WebParam(name = "playerName") String playerName, @WebParam(name = "score") int score) {
+    public int updateScore(@WebParam(name = "playerName") String playerName) {
         try {
             ResultSet resultSet = statement.executeQuery("SELECT ID, SCORE FROM SCORE");
             while(resultSet.next()){
                 if (resultSet.getString("id").equals(playerName)) {
-                    statement.executeUpdate("UPDATE SCORE SET SCORE=" + score + " WHERE ID='" + playerName + "'");
+                    int t = resultSet.getInt("score");
+                    ++t;
+                    statement.executeUpdate("UPDATE SCORE SET SCORE=" + t + " WHERE ID='" + playerName + "'");
                     return 1;
                 }
             }
-            statement.executeUpdate("INSERT INTO SCORE VALUES('" + playerName + "', " + score + ")");
+            statement.executeUpdate("INSERT INTO SCORE VALUES('" + playerName + "', " + 1 + ", false)");
         } catch (SQLException ex) {
             
         }

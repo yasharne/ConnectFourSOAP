@@ -26,7 +26,6 @@ public interface CFWS {
 
     /**
      * 
-     * @param score
      * @param playerName
      * @return
      *     returns int
@@ -38,9 +37,7 @@ public interface CFWS {
     @Action(input = "http://cfws/CFWS/updateScoreRequest", output = "http://cfws/CFWS/updateScoreResponse")
     public int updateScore(
         @WebParam(name = "playerName", targetNamespace = "")
-        String playerName,
-        @WebParam(name = "score", targetNamespace = "")
-        int score);
+        String playerName);
 
     /**
      * 

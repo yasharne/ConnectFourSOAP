@@ -47,7 +47,7 @@
                 Class.forName(JDBC_DRIVER).newInstance();
                 Connection conn = DriverManager.getConnection(DB_URL, "yasharne", "123456789");
                 Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT ID, SCORE FROM SCORE");
+                ResultSet rs = stmt.executeQuery("SELECT ID, SCORE FROM SCORE ORDER BY SCORE DESC");
         %><table><%
             while (rs.next()) {
             %><tr><%

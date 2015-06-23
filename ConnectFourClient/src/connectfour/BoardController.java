@@ -35,7 +35,6 @@ public class BoardController implements Initializable {
     private ConnectFour connectFour;
     private int id;
     public boolean isClosed;
-    public int score;
     private String playerName;
     private boolean win;
     @FXML
@@ -68,7 +67,6 @@ public class BoardController implements Initializable {
         //setPlayerName(1, result.get());
         isClosed = false;
         win = false;
-        score = 0;
         id = newConnection(result.get());
         playerName = result.get();
         System.out.println(playerName);
@@ -110,7 +108,6 @@ public class BoardController implements Initializable {
                     if (getPlayerTurn() == id) {
                         int dw = (int) board.getWidth() / cols;
                         if (addMove((int) (t.getX() / dw), getPlayerTurn())) {
-                            score += 10;
                             setPlayerTurn((getPlayerTurn() == 1 ? 2 : 1));
 
                             renderModel();
@@ -140,7 +137,6 @@ public class BoardController implements Initializable {
     }
 
     public void renderModel() {
-        System.out.println(score);
         if (getPlayerTurn() == id) {
             rectLabel.setText("your turn");
         } else {
@@ -195,14 +191,6 @@ public class BoardController implements Initializable {
     
     public boolean getWin(){
         return win;
-    }
-    
-    public void addScore(int value){
-        score += value;
-    }
-    
-    public int getScore(){
-        return score;
     }
     
     public String getPlayerName(){
@@ -287,10 +275,10 @@ public class BoardController implements Initializable {
         port.setPlayerTurn(playerTurn);
     }
 
-    private static int updateScore(java.lang.String playerName, int score) {
+    private static int updateScore(java.lang.String playerName) {
         cfws.CFWS_Service service = new cfws.CFWS_Service();
         cfws.CFWS port = service.getCFWSPort();
-        return port.updateScore(playerName, score);
+        return port.updateScore(playerName);
     }
 
 }
