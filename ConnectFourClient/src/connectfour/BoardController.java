@@ -36,6 +36,7 @@ public class BoardController implements Initializable {
     private int id;
     public boolean isClosed;
     public int score;
+    private String playerName;
     @FXML
     GridPane board;
     @FXML
@@ -67,6 +68,8 @@ public class BoardController implements Initializable {
         isClosed = false;
         score = 0;
         id = newConnection(result.get());
+        playerName = result.get();
+        System.out.println(playerName);
         System.out.println(id);
         clearBoard();
         for (Node a : board.getChildren()) {
@@ -147,6 +150,7 @@ public class BoardController implements Initializable {
             if (id == 1) {
                 msgLable.setText("You Won!");
                 score += 50;
+                updateScore(playerName, score);
             } else {
                 msgLable.setText(getPlayerName(w) + " Won!");
             }
@@ -157,6 +161,7 @@ public class BoardController implements Initializable {
             if (id == 2) {
                 msgLable.setText("You Won!");
                 score += 50;
+                updateScore(playerName, score);
             } else {
                 msgLable.setText(getPlayerName(w) + " Won!");
             }
@@ -262,6 +267,12 @@ public class BoardController implements Initializable {
         cfws.CFWS_Service service = new cfws.CFWS_Service();
         cfws.CFWS port = service.getCFWSPort();
         port.setPlayerTurn(playerTurn);
+    }
+
+    private static int updateScore(java.lang.String playerName, int score) {
+        cfws.CFWS_Service service = new cfws.CFWS_Service();
+        cfws.CFWS port = service.getCFWSPort();
+        return port.updateScore(playerName, score);
     }
 
 }

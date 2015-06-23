@@ -40,12 +40,14 @@ public class ObjectFactory {
     private final static QName _CheckDrawResponse_QNAME = new QName("http://cfws/", "checkDrawResponse");
     private final static QName _ClearBoardResponse_QNAME = new QName("http://cfws/", "clearBoardResponse");
     private final static QName _GetPlayerTurnResponse_QNAME = new QName("http://cfws/", "getPlayerTurnResponse");
+    private final static QName _UpdateScoreResponse_QNAME = new QName("http://cfws/", "updateScoreResponse");
     private final static QName _SetPlayerTurnResponse_QNAME = new QName("http://cfws/", "setPlayerTurnResponse");
     private final static QName _GetCellResponse_QNAME = new QName("http://cfws/", "getCellResponse");
     private final static QName _RemoveConnection_QNAME = new QName("http://cfws/", "removeConnection");
     private final static QName _GetPlayerName_QNAME = new QName("http://cfws/", "getPlayerName");
     private final static QName _GetConnectedNumberResponse_QNAME = new QName("http://cfws/", "getConnectedNumberResponse");
     private final static QName _GetPlayerNameResponse_QNAME = new QName("http://cfws/", "getPlayerNameResponse");
+    private final static QName _UpdateScore_QNAME = new QName("http://cfws/", "updateScore");
     private final static QName _ClearBoard_QNAME = new QName("http://cfws/", "clearBoard");
     private final static QName _GetRow_QNAME = new QName("http://cfws/", "getRow");
     private final static QName _CheckBoardResponse_QNAME = new QName("http://cfws/", "checkBoardResponse");
@@ -229,6 +231,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link UpdateScore }
+     * 
+     */
+    public UpdateScore createUpdateScore() {
+        return new UpdateScore();
+    }
+
+    /**
      * Create an instance of {@link GetPlayerName }
      * 
      */
@@ -250,6 +260,14 @@ public class ObjectFactory {
      */
     public ClearBoard createClearBoard() {
         return new ClearBoard();
+    }
+
+    /**
+     * Create an instance of {@link UpdateScoreResponse }
+     * 
+     */
+    public UpdateScoreResponse createUpdateScoreResponse() {
+        return new UpdateScoreResponse();
     }
 
     /**
@@ -429,6 +447,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateScoreResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://cfws/", name = "updateScoreResponse")
+    public JAXBElement<UpdateScoreResponse> createUpdateScoreResponse(UpdateScoreResponse value) {
+        return new JAXBElement<UpdateScoreResponse>(_UpdateScoreResponse_QNAME, UpdateScoreResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SetPlayerTurnResponse }{@code >}}
      * 
      */
@@ -480,6 +507,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://cfws/", name = "getPlayerNameResponse")
     public JAXBElement<GetPlayerNameResponse> createGetPlayerNameResponse(GetPlayerNameResponse value) {
         return new JAXBElement<GetPlayerNameResponse>(_GetPlayerNameResponse_QNAME, GetPlayerNameResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateScore }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://cfws/", name = "updateScore")
+    public JAXBElement<UpdateScore> createUpdateScore(UpdateScore value) {
+        return new JAXBElement<UpdateScore>(_UpdateScore_QNAME, UpdateScore.class, null, value);
     }
 
     /**

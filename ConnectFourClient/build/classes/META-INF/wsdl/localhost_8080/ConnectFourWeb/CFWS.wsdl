@@ -4,17 +4,41 @@
 <xsd:import namespace="http://cfws/" schemaLocation="http://localhost:8080/ConnectFourWeb/CFWS?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="removeConnection">
-<part name="parameters" element="tns:removeConnection"/>
+<message name="updateScore">
+<part name="parameters" element="tns:updateScore"/>
 </message>
-<message name="removeConnectionResponse">
-<part name="parameters" element="tns:removeConnectionResponse"/>
+<message name="updateScoreResponse">
+<part name="parameters" element="tns:updateScoreResponse"/>
 </message>
 <message name="newConnection">
 <part name="parameters" element="tns:newConnection"/>
 </message>
 <message name="newConnectionResponse">
 <part name="parameters" element="tns:newConnectionResponse"/>
+</message>
+<message name="getRow">
+<part name="parameters" element="tns:getRow"/>
+</message>
+<message name="getRowResponse">
+<part name="parameters" element="tns:getRowResponse"/>
+</message>
+<message name="getColumn">
+<part name="parameters" element="tns:getColumn"/>
+</message>
+<message name="getColumnResponse">
+<part name="parameters" element="tns:getColumnResponse"/>
+</message>
+<message name="getPlayerName">
+<part name="parameters" element="tns:getPlayerName"/>
+</message>
+<message name="getPlayerNameResponse">
+<part name="parameters" element="tns:getPlayerNameResponse"/>
+</message>
+<message name="setPlayerName">
+<part name="parameters" element="tns:setPlayerName"/>
+</message>
+<message name="setPlayerNameResponse">
+<part name="parameters" element="tns:setPlayerNameResponse"/>
 </message>
 <message name="getPlayerTurn">
 <part name="parameters" element="tns:getPlayerTurn"/>
@@ -64,38 +88,36 @@
 <message name="getConnectedNumberResponse">
 <part name="parameters" element="tns:getConnectedNumberResponse"/>
 </message>
-<message name="getRow">
-<part name="parameters" element="tns:getRow"/>
+<message name="removeConnection">
+<part name="parameters" element="tns:removeConnection"/>
 </message>
-<message name="getRowResponse">
-<part name="parameters" element="tns:getRowResponse"/>
-</message>
-<message name="getColumn">
-<part name="parameters" element="tns:getColumn"/>
-</message>
-<message name="getColumnResponse">
-<part name="parameters" element="tns:getColumnResponse"/>
-</message>
-<message name="getPlayerName">
-<part name="parameters" element="tns:getPlayerName"/>
-</message>
-<message name="getPlayerNameResponse">
-<part name="parameters" element="tns:getPlayerNameResponse"/>
-</message>
-<message name="setPlayerName">
-<part name="parameters" element="tns:setPlayerName"/>
-</message>
-<message name="setPlayerNameResponse">
-<part name="parameters" element="tns:setPlayerNameResponse"/>
+<message name="removeConnectionResponse">
+<part name="parameters" element="tns:removeConnectionResponse"/>
 </message>
 <portType name="CFWS">
-<operation name="removeConnection">
-<input wsam:Action="http://cfws/CFWS/removeConnectionRequest" message="tns:removeConnection"/>
-<output wsam:Action="http://cfws/CFWS/removeConnectionResponse" message="tns:removeConnectionResponse"/>
+<operation name="updateScore">
+<input wsam:Action="http://cfws/CFWS/updateScoreRequest" message="tns:updateScore"/>
+<output wsam:Action="http://cfws/CFWS/updateScoreResponse" message="tns:updateScoreResponse"/>
 </operation>
 <operation name="newConnection">
 <input wsam:Action="http://cfws/CFWS/newConnectionRequest" message="tns:newConnection"/>
 <output wsam:Action="http://cfws/CFWS/newConnectionResponse" message="tns:newConnectionResponse"/>
+</operation>
+<operation name="getRow">
+<input wsam:Action="http://cfws/CFWS/getRowRequest" message="tns:getRow"/>
+<output wsam:Action="http://cfws/CFWS/getRowResponse" message="tns:getRowResponse"/>
+</operation>
+<operation name="getColumn">
+<input wsam:Action="http://cfws/CFWS/getColumnRequest" message="tns:getColumn"/>
+<output wsam:Action="http://cfws/CFWS/getColumnResponse" message="tns:getColumnResponse"/>
+</operation>
+<operation name="getPlayerName">
+<input wsam:Action="http://cfws/CFWS/getPlayerNameRequest" message="tns:getPlayerName"/>
+<output wsam:Action="http://cfws/CFWS/getPlayerNameResponse" message="tns:getPlayerNameResponse"/>
+</operation>
+<operation name="setPlayerName">
+<input wsam:Action="http://cfws/CFWS/setPlayerNameRequest" message="tns:setPlayerName"/>
+<output wsam:Action="http://cfws/CFWS/setPlayerNameResponse" message="tns:setPlayerNameResponse"/>
 </operation>
 <operation name="getPlayerTurn">
 <input wsam:Action="http://cfws/CFWS/getPlayerTurnRequest" message="tns:getPlayerTurn"/>
@@ -129,26 +151,14 @@
 <input wsam:Action="http://cfws/CFWS/getConnectedNumberRequest" message="tns:getConnectedNumber"/>
 <output wsam:Action="http://cfws/CFWS/getConnectedNumberResponse" message="tns:getConnectedNumberResponse"/>
 </operation>
-<operation name="getRow">
-<input wsam:Action="http://cfws/CFWS/getRowRequest" message="tns:getRow"/>
-<output wsam:Action="http://cfws/CFWS/getRowResponse" message="tns:getRowResponse"/>
-</operation>
-<operation name="getColumn">
-<input wsam:Action="http://cfws/CFWS/getColumnRequest" message="tns:getColumn"/>
-<output wsam:Action="http://cfws/CFWS/getColumnResponse" message="tns:getColumnResponse"/>
-</operation>
-<operation name="getPlayerName">
-<input wsam:Action="http://cfws/CFWS/getPlayerNameRequest" message="tns:getPlayerName"/>
-<output wsam:Action="http://cfws/CFWS/getPlayerNameResponse" message="tns:getPlayerNameResponse"/>
-</operation>
-<operation name="setPlayerName">
-<input wsam:Action="http://cfws/CFWS/setPlayerNameRequest" message="tns:setPlayerName"/>
-<output wsam:Action="http://cfws/CFWS/setPlayerNameResponse" message="tns:setPlayerNameResponse"/>
+<operation name="removeConnection">
+<input wsam:Action="http://cfws/CFWS/removeConnectionRequest" message="tns:removeConnection"/>
+<output wsam:Action="http://cfws/CFWS/removeConnectionResponse" message="tns:removeConnectionResponse"/>
 </operation>
 </portType>
 <binding name="CFWSPortBinding" type="tns:CFWS">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="removeConnection">
+<operation name="updateScore">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -158,6 +168,42 @@
 </output>
 </operation>
 <operation name="newConnection">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getRow">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getColumn">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getPlayerName">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="setPlayerName">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -238,34 +284,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getRow">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="getColumn">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="getPlayerName">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="setPlayerName">
+<operation name="removeConnection">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

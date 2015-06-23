@@ -26,15 +26,21 @@ public interface CFWS {
 
     /**
      * 
+     * @param score
+     * @param playerName
      * @return
      *     returns int
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "removeConnection", targetNamespace = "http://cfws/", className = "cfws.RemoveConnection")
-    @ResponseWrapper(localName = "removeConnectionResponse", targetNamespace = "http://cfws/", className = "cfws.RemoveConnectionResponse")
-    @Action(input = "http://cfws/CFWS/removeConnectionRequest", output = "http://cfws/CFWS/removeConnectionResponse")
-    public int removeConnection();
+    @RequestWrapper(localName = "updateScore", targetNamespace = "http://cfws/", className = "cfws.UpdateScore")
+    @ResponseWrapper(localName = "updateScoreResponse", targetNamespace = "http://cfws/", className = "cfws.UpdateScoreResponse")
+    @Action(input = "http://cfws/CFWS/updateScoreRequest", output = "http://cfws/CFWS/updateScoreResponse")
+    public int updateScore(
+        @WebParam(name = "playerName", targetNamespace = "")
+        String playerName,
+        @WebParam(name = "score", targetNamespace = "")
+        int score);
 
     /**
      * 
@@ -48,6 +54,60 @@ public interface CFWS {
     @ResponseWrapper(localName = "newConnectionResponse", targetNamespace = "http://cfws/", className = "cfws.NewConnectionResponse")
     @Action(input = "http://cfws/CFWS/newConnectionRequest", output = "http://cfws/CFWS/newConnectionResponse")
     public int newConnection(
+        @WebParam(name = "playerName", targetNamespace = "")
+        String playerName);
+
+    /**
+     * 
+     * @return
+     *     returns int
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getRow", targetNamespace = "http://cfws/", className = "cfws.GetRow")
+    @ResponseWrapper(localName = "getRowResponse", targetNamespace = "http://cfws/", className = "cfws.GetRowResponse")
+    @Action(input = "http://cfws/CFWS/getRowRequest", output = "http://cfws/CFWS/getRowResponse")
+    public int getRow();
+
+    /**
+     * 
+     * @return
+     *     returns int
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getColumn", targetNamespace = "http://cfws/", className = "cfws.GetColumn")
+    @ResponseWrapper(localName = "getColumnResponse", targetNamespace = "http://cfws/", className = "cfws.GetColumnResponse")
+    @Action(input = "http://cfws/CFWS/getColumnRequest", output = "http://cfws/CFWS/getColumnResponse")
+    public int getColumn();
+
+    /**
+     * 
+     * @param playerNumber
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getPlayerName", targetNamespace = "http://cfws/", className = "cfws.GetPlayerName")
+    @ResponseWrapper(localName = "getPlayerNameResponse", targetNamespace = "http://cfws/", className = "cfws.GetPlayerNameResponse")
+    @Action(input = "http://cfws/CFWS/getPlayerNameRequest", output = "http://cfws/CFWS/getPlayerNameResponse")
+    public String getPlayerName(
+        @WebParam(name = "playerNumber", targetNamespace = "")
+        int playerNumber);
+
+    /**
+     * 
+     * @param playerNumber
+     * @param playerName
+     */
+    @WebMethod
+    @RequestWrapper(localName = "setPlayerName", targetNamespace = "http://cfws/", className = "cfws.SetPlayerName")
+    @ResponseWrapper(localName = "setPlayerNameResponse", targetNamespace = "http://cfws/", className = "cfws.SetPlayerNameResponse")
+    @Action(input = "http://cfws/CFWS/setPlayerNameRequest", output = "http://cfws/CFWS/setPlayerNameResponse")
+    public void setPlayerName(
+        @WebParam(name = "playerNumber", targetNamespace = "")
+        int playerNumber,
         @WebParam(name = "playerName", targetNamespace = "")
         String playerName);
 
@@ -163,51 +223,9 @@ public interface CFWS {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getRow", targetNamespace = "http://cfws/", className = "cfws.GetRow")
-    @ResponseWrapper(localName = "getRowResponse", targetNamespace = "http://cfws/", className = "cfws.GetRowResponse")
-    @Action(input = "http://cfws/CFWS/getRowRequest", output = "http://cfws/CFWS/getRowResponse")
-    public int getRow();
-
-    /**
-     * 
-     * @return
-     *     returns int
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getColumn", targetNamespace = "http://cfws/", className = "cfws.GetColumn")
-    @ResponseWrapper(localName = "getColumnResponse", targetNamespace = "http://cfws/", className = "cfws.GetColumnResponse")
-    @Action(input = "http://cfws/CFWS/getColumnRequest", output = "http://cfws/CFWS/getColumnResponse")
-    public int getColumn();
-
-    /**
-     * 
-     * @param playerNumber
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getPlayerName", targetNamespace = "http://cfws/", className = "cfws.GetPlayerName")
-    @ResponseWrapper(localName = "getPlayerNameResponse", targetNamespace = "http://cfws/", className = "cfws.GetPlayerNameResponse")
-    @Action(input = "http://cfws/CFWS/getPlayerNameRequest", output = "http://cfws/CFWS/getPlayerNameResponse")
-    public String getPlayerName(
-        @WebParam(name = "playerNumber", targetNamespace = "")
-        int playerNumber);
-
-    /**
-     * 
-     * @param playerNumber
-     * @param playerName
-     */
-    @WebMethod
-    @RequestWrapper(localName = "setPlayerName", targetNamespace = "http://cfws/", className = "cfws.SetPlayerName")
-    @ResponseWrapper(localName = "setPlayerNameResponse", targetNamespace = "http://cfws/", className = "cfws.SetPlayerNameResponse")
-    @Action(input = "http://cfws/CFWS/setPlayerNameRequest", output = "http://cfws/CFWS/setPlayerNameResponse")
-    public void setPlayerName(
-        @WebParam(name = "playerNumber", targetNamespace = "")
-        int playerNumber,
-        @WebParam(name = "playerName", targetNamespace = "")
-        String playerName);
+    @RequestWrapper(localName = "removeConnection", targetNamespace = "http://cfws/", className = "cfws.RemoveConnection")
+    @ResponseWrapper(localName = "removeConnectionResponse", targetNamespace = "http://cfws/", className = "cfws.RemoveConnectionResponse")
+    @Action(input = "http://cfws/CFWS/removeConnectionRequest", output = "http://cfws/CFWS/removeConnectionResponse")
+    public int removeConnection();
 
 }

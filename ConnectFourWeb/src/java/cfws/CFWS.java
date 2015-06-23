@@ -5,6 +5,14 @@
  */
 package cfws;
 
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -16,6 +24,10 @@ import javax.jws.WebParam;
 @WebService(serviceName = "CFWS")
 public class CFWS {
 
+    private final String DB_URL = "jdbc:derby://localhost:1527/Score;create=true";
+    private final String JDBC_DRIVER = "org.apache.derby.jdbc.ClientDriver";
+    private Connection connection;
+    private Statement statement;
     private static final int ROWS = 6;
     private static final int COLUMNS = 7;
     private int board[][] = new int[ROWS][COLUMNS];
@@ -37,14 +49,14 @@ public class CFWS {
         }
         return connectedNumber;
     }
-    
+
     @WebMethod
-    public int removeConnection(){
+    public int removeConnection() {
         connectedNumber--;
         playerTurn = 1;
         return connectedNumber;
     }
-    
+
     @WebMethod
     public int getConnectedNumber() {
         return this.connectedNumber;
@@ -234,15 +246,38 @@ public class CFWS {
         return 0;
     }
 
+    public CFWS() {
+        try {
+            Class.forName(JDBC_DRIVER).newInstance();
+            connection = DriverManager.getConnection(DB_URL, "yasharne", "123456789");
+            statement = connection.createStatement();
+        } catch (Exception e) {
+        }
+    }
+
     @WebMethod
     public void clearBoard() {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 board[i][j] = 0;
-
             }
-
         }
+    }
 
+    @WebMethod
+    public int updateScore(@WebParam(name = "playerName") String playerName, @WebParam(name = "score") int score) {
+        try {
+            ResultSet resultSet = statement.executeQuery("SELECT ID, SCORE FROM SCORE");
+            while(resultSet.next()){
+                if (resultSet.getString("id").equals(playerName)) {
+                    statement.executeUpdate("UPDATE SCORE SET SCORE=" + score + " WHERE ID='" + playerName + "'");
+                    return 1;
+                }
+            }
+            statement.executeUpdate("INSERT INTO SCORE VALUES('" + playerName + "', " + score + ")");
+        } catch (SQLException ex) {
+            
+        }
+        return 1;
     }
 }
