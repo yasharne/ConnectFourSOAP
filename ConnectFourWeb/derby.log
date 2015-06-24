@@ -1,7 +1,7 @@
-Tue Jun 23 08:52:40 IRDT 2015 : Apache Derby Network Server - 10.11.1.2 - (1629631) started and ready to accept connections on port 1527
+Wed Jun 24 06:41:31 IRDT 2015 : Apache Derby Network Server - 10.11.1.2 - (1629631) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Tue Jun 23 08:53:25 IRDT 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-014e-1ea7-5810-00007a0f4007 
+Wed Jun 24 06:42:10 IRDT 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-014e-2355-9efc-00007a0f4007 
 on database directory /home/yashar/NetBeansProjects/ConnectFourSOAP/ConnectFourWeb/Score with class loader sun.misc.Launcher$AppClassLoader@60e53b93 
 Loaded from file:/usr/java/jdk1.8.0_40/db/lib/derby.jar
 java.vendor=Oracle Corporation

@@ -49,7 +49,7 @@ public class CFWS {
                 ResultSet resultSet = statement.executeQuery("SELECT ID, ONLINE FROM SCORE");
                 while (resultSet.next()) {
                     if (resultSet.getString("id").equals(playerName)) {
-                        statement.executeUpdate("UPDATE SCORE SET ONLINE=true WHERE id=" + playerName);
+                        statement.executeUpdate("UPDATE SCORE SET ONLINE=true WHERE id='" + playerName + "'");
                         found = true;
                         break;
                     }
